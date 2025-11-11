@@ -106,8 +106,19 @@ with st.sidebar:
         if checked:
             selected_cats.append(cat)
 
+    # 🔹 NEW FILTER: only polygons with Notes text
+    st.markdown("---")
+    st.header("Notes")
+    notes_only = st.checkbox("Show only parcels with Notes", value=False)
+
+
 # filter by checkboxes
 filtered = resi_parcels_keep[resi_parcels_keep["Owner Type"].isin(selected_cats)].copy()
+if notes_only:
+    filtered = filtered[
+        filtered["Notes"].notna() &
+        (filtered["Notes"].astype(str).str.strip() != "")
+    ]
 
 
 # ----------------------
@@ -156,8 +167,7 @@ for raw in selected_cats:   # show only currently selected
     col = color_map[raw]
     legend_html += (
         f"<div style='display:flex;align-items:center;gap:4px;'>"
-        f"<div style='width:14px;height:14px;background:rgba({col[0]}, {col[1]}, {col[2]}, 1);"
-        f"border:1px solid #555;'></div>"
+        f"<div style='width:14px;height:14px;background:rgba({col[0]}, {col[1]}, {col[2]}, 1)'></div>"
         f"<div style='font-size:12px;'>{disp}</div>"
         f"</div>"
     )
