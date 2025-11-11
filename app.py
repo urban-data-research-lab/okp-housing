@@ -188,7 +188,7 @@ st.pydeck_chart(
         initial_view_state=view_state,
         map_style=map_style,
         tooltip={
-            "text": "Parcel Number: {APN}\nOwner Type: {Owner Type}\nActual Owner Type: {Actual Owner Type}\nOwner Name: {Owner Name}\nNotes: {Notes}",
+            "text": "Parcel Number: {APN}\nAddress Line 1: {Address Line 1}\nAddress Line 2: {Address Line 2}\nOwner Type: {Owner Type}\nActual Owner Type: {Actual Owner Type}\nOwner Name: {Owner Name}\nNotes: {Notes}",
             "style": {
                 "backgroundColor": "rgba(50, 50, 50, 0.9)",
                 "color": "white",
