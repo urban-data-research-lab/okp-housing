@@ -9,7 +9,7 @@ import plotly.express as px
 # ----------------------
 @st.cache_data
 def load_data():
-    resi_parcels_keep = gpd.read_file("resi_parcels_keep.geojson")  # or shapefile/parquet
+    resi_parcels_keep = gpd.read_file("data/resi_parcels_keep.geojson")  # or shapefile/parquet
     # make sure it's WGS84
     if resi_parcels_keep.crs is not None and resi_parcels_keep.crs.to_epsg() != 4326:
         resi_parcels_keep = resi_parcels_keep.to_crs(epsg=4326)
